@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    //Get input
+let a, b, c;
+let notice;
+let x1
+// let result;
+
+//Forn validation equation function
+function validate(){
+  //Get the input
+  a = document.forms["input_form"]["term-a"].value;
+  b = document.forms["input_form"]["term-b"].value;
+  c = document.forms["input_form"]["term-c"].value;
+
+  //Input validation
+  if(a == 0){
+    notice = "<em>a<em/>Enter a non-zero integer for a-coefficient!"
+    
+  }else{
+    //Quadratic (-b +- sqrt(b^2 - 4ac)) /2a = 0
+    let x_1= (-b + Math.sqrt(Math.pow(b,2) - 4 * a * c)) / (2 * a);
+    
+    let x_2 = (-b - Math.sqrt(Math.pow(b,2) - 4 * a * c)) / (2 * a);
+    notice = (`x is: ${x_1} or ${x_2}`)
+  }
+
+  document.querySelector("#result").innerHTML = notice
+  
+}
+  </script>
+
+</head>
+<body>
+
+  <div>
+    <p> Please enter the coefficients <strong>a</strong>,<strong>b<b></b></strong>,<strong>c</strong> for the equation of the form <strong>ax&#x00B2; + bx + c = 0 </strong></p>
+    <br>
+
+
+  <form  name="input_form" action="javascript:validate();">
+    a: <input type="number" name="term-a" size="5" required></input>
+    b: <input type="number" name="term-b" size="5" required></input>
+    c: <input type="number" name="term-c" size="5" required></input>
+    <br>
+    <br>
+    <input type="submit" value="Calculate">
+  </form>
+  <br>
+
+  <p id="result"></p>
+  </div>
+
+  
+
+  <!-- <script src="quadratic.js"></script> -->
+</body>
+</html>
